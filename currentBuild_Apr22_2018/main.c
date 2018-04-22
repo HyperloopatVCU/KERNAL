@@ -27,7 +27,7 @@ uint8_t set_me_up(socker* sock) {
 	/* OPEN socket */
 	if (opensocket(sock)) return -1; /* Socket won't OPEN */
 	
-	#ifdef MASTER
+#ifdef MASTER
 	/* Set up master */
 	
 	/* LISTEN for connection */
@@ -37,7 +37,7 @@ uint8_t set_me_up(socker* sock) {
 		case -2: return -3; /* Socket won't LISTEN */
 		default: return r; /*Something undefined happened*/
 	}
-	#else
+#else
 	/* Set up client */
 	
 	switch(r = connect_block(sock, &server, 8080)) {
@@ -45,7 +45,7 @@ uint8_t set_me_up(socker* sock) {
 		case -1: return -2; /* Socket won't ESTABLISH */
 		default: return r; /*Something undefined happened*/
 	}
-	#endif
+#endif
 	return 0;
 }
 
