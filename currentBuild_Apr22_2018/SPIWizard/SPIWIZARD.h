@@ -30,9 +30,9 @@
 #define SPI_MS (1<<DD_SS)|(1<<DD_MOSI)|(1<<DD_SCK)
 #define SPI_SL (1<<DD_SS)|(1<<DD_MISO)
 
-void spi_setup(char);
+/* general-purpose */
 
-void SS_S(uint8_t);
+void spi_setup(char);
 
 /* blocking prototypes */
 uint8_t spi_block(uint8_t);

@@ -1,1 +1,0 @@
-Do NOT attempt to compile this for any machine other than ATMEL microcontrollers!

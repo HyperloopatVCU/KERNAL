@@ -6,6 +6,27 @@
  */ 
 
 #include "base_includes.h"
+#include <avr/sfr_defs.h>
+
+void kill(uint8_t r) {
+	uint32_t x;
+	uint8_t y;
+	if (r == 0) return;
+	r=-r;
+	SET(DDRD, DDD1);
+	CLR(PORTD, PORTD1);
+	while (1) {
+		for (y = 0x0a; y; y--)
+		for (x = 0x0f0000; x; x--);
+		for (y = r; y; y--) {
+			SET(PIND, PIND1);
+			for (x = 0x0f0000; x; x--);
+			CLR(PIND, PIND1);
+			for (x = 0x0f0000; x; x--);
+		}
+	}
+}
+
 void nothing() {}
 
 /* //This is for use with CIDR decryption
